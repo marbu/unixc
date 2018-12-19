@@ -22,7 +22,11 @@ int main(int argc, char**argv)
 
 	rc = statx(AT_FDCWD, argv[1], 0, STATX_BTIME, &stx);
 	if (rc == 0) {
-		printf("%u.%u\n", stx.stx_btime.tv_sec, stx.stx_btime.tv_nsec);
+		if (stx.stx_btime.tv_sec != 0) {
+			printf("%u.%u\n", stx.stx_btime.tv_sec, stx.stx_btime.tv_nsec);
+		} else {
+			printf("-\n");
+		}
 	} else {
 		perror("statx");
 	}
