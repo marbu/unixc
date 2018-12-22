@@ -14,9 +14,9 @@ int main(int argc, char**argv)
 	struct statx stx = { 0, };
 	int rc = 0;
 
-	if (argc <= 1 || argc > 2) {
-		printf("Prints btime of a given file in UNIX time format.\n");
+	if (argc != 2) {
 		printf("Usage: %s FILE\n", argv[0]);
+		printf("Display btime of a given file in UNIX time format.\n");
 		return EXIT_SUCCESS;
 	}
 
